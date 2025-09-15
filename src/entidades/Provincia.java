@@ -11,7 +11,6 @@ import java.util.Set;
 @Setter
 @Getter
 @Builder
-@SuperBuilder
 public class Provincia {
     private Long id;
     private String nombre;

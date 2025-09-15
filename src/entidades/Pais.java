@@ -12,7 +12,7 @@ import java.util.Set;
 @Setter
 @Getter
 @Builder
-@SuperBuilder
+
 public class Pais {
     private Long id;
     private String nombre;

@@ -10,7 +10,7 @@ import lombok.experimental.SuperBuilder;
 @Setter
 @Getter
 @Builder
-@SuperBuilder
+
 public class Localidad {
     private Long id;
     private String nombre;

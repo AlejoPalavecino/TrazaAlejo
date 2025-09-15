@@ -11,7 +11,6 @@ import java.time.LocalTime;
 @Getter
 @Builder
 @ToString(exclude = "empresa")  // Excluir empresa para evitar recursión infinita
-@SuperBuilder
 public class Sucursal {
     private Long id;
     private String nombre;
