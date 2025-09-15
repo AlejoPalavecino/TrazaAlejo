@@ -10,6 +10,7 @@ import java.util.Set;
 @NoArgsConstructor
 @Setter
 @Getter
+@Builder
 @ToString(exclude = "sucursales")  // Excluir sucursales para evitar recursión infinita
 @SuperBuilder
 public class Empresa {
@@ -17,20 +18,5 @@ public class Empresa {
     private String nombre;
     private String razonSocial;
     private Long cuil;
-
-    @Builder.Default
     private Set<Sucursal> sucursales = new HashSet<>();
-/*
-    @Override
-    public String toString() {
-        return "Empresa{" +
-                "id=" + id +
-                ", nombre='" + nombre + '\'' +
-                ", razonSocial='" + razonSocial + '\'' +
-                ", cuil=" + cuil +
-                '}';
-    }
-
-  */
-
 }

@@ -9,6 +9,7 @@ import java.time.LocalTime;
 @NoArgsConstructor
 @Setter
 @Getter
+@Builder
 @ToString(exclude = "empresa")  // Excluir empresa para evitar recursión infinita
 @SuperBuilder
 public class Sucursal {
@@ -17,21 +18,6 @@ public class Sucursal {
     private LocalTime horarioApertura;
     private LocalTime horarioCierre;
     private boolean esCasaMatriz;
-
     private Domicilio domicilio;
-
     private Empresa empresa;
-/*
-    @Override
-    public String toString() {
-        return "Sucursal{" +
-                "id=" + id +
-                ", nombre='" + nombre + '\'' +
-                ", horarioApertura=" + horarioApertura +
-                ", horarioCierre=" + horarioCierre +
-                ", esCasaMatriz=" + esCasaMatriz +
-                ", domicilio=" + domicilio +  // Aquí se imprime el domicilio, que ya tiene su propia lógica de toString
-                '}';
-    }
-   */
 }

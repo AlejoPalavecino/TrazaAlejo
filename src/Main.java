@@ -1,5 +1,4 @@
 import entidades.*;
-import repositorios.InMemoryRepository;
 
 import java.time.LocalTime;
 import java.util.HashSet;
@@ -11,8 +10,6 @@ import java.util.Set;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        // Inicializar repositorios
-        InMemoryRepository<Empresa> empresaRepository = new InMemoryRepository<>();
         System.out.println(" -----------PROBAMOS EL SISTEMA ----------");
         Pais argentina = Pais.builder().nombre("Argentina").
                 build();
@@ -157,58 +154,5 @@ public class Main {
         sucursal2.setEmpresa(empresa1);
         sucursal3.setEmpresa(empresa2);
         sucursal4.setEmpresa(empresa2);
-
-        // Guardar empresas en el repositorio
-        empresaRepository.save(empresa1);
-        empresaRepository.save(empresa2);
-
-        // Mostrar todas las empresas
-        System.out.println("Todas las empresas:");
-        List<Empresa> todasLasEmpresas = empresaRepository.findAll();
-        todasLasEmpresas.forEach(System.out::println);
-
-        // Buscar empresa por ID
-        Optional<Empresa> empresaEncontrada = empresaRepository.findById(1L);
-        empresaEncontrada.ifPresent(e -> System.out.println("Empresa encontrada por ID 1: " + e));
-
-        // Buscar empresa por nombre
-        List<Empresa> empresasPorNombre = empresaRepository.genericFindByField("nombre", "Empresa 1");
-        System.out.println("Empresas con nombre 'Empresa 1':");
-        empresasPorNombre.forEach(System.out::println);
-
-        // Actualizar empresa por ID
-        Empresa empresaActualizada = Empresa.builder()
-                .id(1L)
-                .nombre("Empresa 1 Actualizada")
-                .razonSocial("Razon Social 1 Actualizada")
-                .cuil(12345678901L)
-                .sucursales(empresa1.getSucursales())
-                .build();
-
-        empresaRepository.genericUpdate(1L, empresaActualizada);
-        Optional<Empresa> empresaVerificada = empresaRepository.findById(1L);
-        empresaVerificada.ifPresent(e -> System.out.println("Empresa después de la actualización: " + e));
-
-        // Eliminar empresa por ID
-        empresaRepository.genericDelete(1L);
-        Optional<Empresa> empresaEliminada = empresaRepository.findById(1L);
-        if (empresaEliminada.isEmpty()) {
-            System.out.println("La empresa con ID 1 ha sido eliminada.");
-        }
-
-        // Mostrar todas las empresas restantes
-        System.out.println("Todas las empresas después de la eliminación:");
-        List<Empresa> empresasRestantes = empresaRepository.findAll();
-        empresasRestantes.forEach(System.out::println);
-        System.out.println("--------------Mostrar las sucursales de una empresa determinada");
-// Mostrar las sucursales de una empresa deerminada
-        Optional<Empresa> empresa = empresaRepository.findById(2L);
-        if (empresa.isPresent()) {
-            System.out.println("Sucursales de la empresa con ID "  + ":");
-            Set<Sucursal> sucursales = empresa.get().getSucursales();
-            sucursales.forEach(System.out::println);
-        } else {
-            System.out.println("Empresa con ID " + " no encontrada.");
-        }
     }
 }

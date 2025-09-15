@@ -7,6 +7,7 @@ import lombok.experimental.SuperBuilder;
 @NoArgsConstructor
 @Setter
 @Getter
+@Builder
 @ToString(exclude = "localidad")  // Excluir localidad para evitar recursión infinita
 @SuperBuilder
 public class Domicilio {
@@ -16,22 +17,5 @@ public class Domicilio {
     private Integer cp;
     private Integer piso;
     private Integer nroDpto;
-
     private Localidad localidad;
-/*
-    @Override
-    public String toString() {
-        return "Domicilio{" +
-                "id=" + id +
-                ", calle='" + calle + '\'' +
-                ", numero=" + numero +
-                ", cp=" + cp +
-                ", piso=" + piso +
-                ", nroDpto=" + nroDpto +
-                ", localidad=" + (localidad != null ? localidad.getNombre() : null) +  // Evitar recursión infinita
-                '}';
-    }
-
-
- */
 }
