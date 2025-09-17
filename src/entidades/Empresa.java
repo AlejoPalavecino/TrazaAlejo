@@ -1,8 +1,6 @@
 package entidades;
 
 import lombok.*;
-import lombok.experimental.SuperBuilder;
-import org.w3c.dom.ls.LSOutput;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -16,6 +14,7 @@ import java.util.Set;
 
 public class Empresa {
     private Long id;
+    private String logo;
     private String nombre;
     private String razonSocial;
     private Long cuil;
